@@ -110,7 +110,7 @@ class m_peserta extends CI_Model {
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Lelang">  
     public function getStatusLelang() {
-        $sql = "SELECT aktif FROM season WHERE aktif = '1' OR aktif = '2'";
+        $sql = "SELECT id, aktif FROM season WHERE aktif = '1' OR aktif = '2'";
         $result = $this->db->query($sql);
         return $result->row_array();
     }
@@ -147,7 +147,7 @@ class m_peserta extends CI_Model {
     }
 
     public function getLelangDatabase($idLelang) {
-        $sql = "SELECT id FROM lelang_jual_customer WHERE id = ?";
+        $sql = "SELECT lj.id, lj.season_id, s.aktif FROM lelang_jual_customer lj INNER JOIN season s ON lj.season_id = s.id WHERE lj.id = ?";
         $result = $this->db->query($sql, array($idLelang));
         return $result->row_array();
     }

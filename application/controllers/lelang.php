@@ -65,30 +65,35 @@ class Lelang extends CI_Controller {
         $content['status']["class"] = (empty($statusLelang)) ? "red" : (($statusLelang["aktif"] == '1') ? "blue" : "green");
         $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Lelang" : "Pendaftaran Lelang");
         if (($this->input->server('REQUEST_METHOD') == "POST") && (!empty($cekLelangDatabase))):
-            $this->load->library('form_validation');
-            //cari nilai max lelang
-            $max = PHP_INT_MAX;
-            foreach ($content['detailBarang'] as $index => $single):
-                $nilai = (isset($single['stok'])) ? $single['stok'] : 0;
-                $max = ($max > $nilai) ? $nilai : $max;
-            endforeach;
-            $max++;
-            //setting rule
-            $this->form_validation->set_rules("jumlah", "Jumlah Penawaran", "required|callback__numeric_wcomma|callback__greater_than_wcomma[0]|callback__less_than_wcomma[$max]");
-            $this->form_validation->set_rules("harga", "Harga Penawawan", "required|callback_numeric_wcomma|callback_greather_than_wcomma[-1]");
-            //setting pesan
-            $this->form_validation->set_message('required', "%s harus diisi");
-            //jalankan validasi
-            if ($this->form_validation->run() == TRUE) :
-                $input['jumlah'] = str_replace(",", "", $this->input->post("jumlah"));
-                $input['harga'] = str_replace(",", "", $this->input->post("harga"));
-                $status = $this->m_peserta->joinLelang($input, $content['detailBarang'], $this->session->userdata("peserta_id"), $id);
-                if ($status):
-                    $this->session->set_flashdata('notif', array("jenis" => "success", "pesan" => "Pengikutan Lelang no $id Berhasil dilakukan"));
-                else:
-                    $this->session->set_flashdata('notif', array("jenis" => "danger", "pesan" => "Pengikutan Lelang no $id  Gagal dilakukan"));
+            if (($cekLelangDatabase['season_id'] == $statusLelang['id']) && ($statusLelang['aktif'] == "2")):
+                $this->load->library('form_validation');
+                //cari nilai max lelang
+                $max = PHP_INT_MAX;
+                foreach ($content['detailBarang'] as $index => $single):
+                    $nilai = (isset($single['stok'])) ? $single['stok'] : 0;
+                    $max = ($max > $nilai) ? $nilai : $max;
+                endforeach;
+                $max++;
+                //setting rule
+                $this->form_validation->set_rules("jumlah", "Jumlah Penawaran", "required|callback__numeric_wcomma|callback__greater_than_wcomma[0]|callback__less_than_wcomma[$max]");
+                $this->form_validation->set_rules("harga", "Harga Penawawan", "required|callback_numeric_wcomma|callback_greather_than_wcomma[-1]");
+                //setting pesan
+                $this->form_validation->set_message('required', "%s harus diisi");
+                //jalankan validasi
+                if ($this->form_validation->run() == TRUE) :
+                    $input['jumlah'] = str_replace(",", "", $this->input->post("jumlah"));
+                    $input['harga'] = str_replace(",", "", $this->input->post("harga"));
+                    $status = $this->m_peserta->joinLelang($input, $content['detailBarang'], $this->session->userdata("peserta_id"), $id);
+                    if ($status):
+                        $this->session->set_flashdata('notif', array("jenis" => "success", "pesan" => "Pengikutan Lelang no $id Berhasil dilakukan"));
+                    else:
+                        $this->session->set_flashdata('notif', array("jenis" => "danger", "pesan" => "Pengikutan Lelang no $id  Gagal dilakukan"));
+                    endif;
+                    redirect("lelang");
                 endif;
-                redirect("lelang");
+            elseif ($statusLelang == "1"):
+                $this->session->set_flashdata('notif', array("jenis" => "danger", "pesan" => "Pengikutan Lelang no $id  Gagal karena season $id ditutup"));
+                redirect("lelang");            
             endif;
         endif;
         $this->load->view('v_header', $header);
