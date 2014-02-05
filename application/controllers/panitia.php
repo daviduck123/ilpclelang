@@ -995,7 +995,7 @@ class Panitia extends CI_Controller {
     public function ubahstatus() {
         $id = str_replace("panitia/pos/ubahstatus/", "", $this->uri->uri_string());
         if ($id == "panitia/pos/ubahstatus"):
-        redirect("error/error404");
+            redirect("error/error404");
         endif;
         $id = explode("|", $id);
         $idpeserta = $this->encrypt->decode($id[0]);
@@ -1074,6 +1074,94 @@ class Panitia extends CI_Controller {
         $this->load->view('v_header', $header);
         $this->load->view("panitia/v_menu_panitia", $menu);
         $this->load->view('panitia/admin/wewenang/v_edit_wewenang', $content);
+        $this->load->view('v_footer');
+    }
+
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Super Admin">
+    public function barang() {
+        $header['title'] = 'Barang Pos';
+        $menu = $this->websession->getSession();
+        $this->checkAdmin($menu);
+        $content = array();
+        $content['notif'] = $this->session->flashdata("notif");
+        $content['barang'] = $this->m_panitia->getAllBarang();
+        $this->load->view('v_header', $header);
+        $this->load->view("panitia/v_menu_panitia", $menu);
+        $this->load->view('panitia/admin/barang/v_all_barang', $content);
+        $this->load->view('v_footer');
+    }
+
+    public function editBarang() {
+        $id = str_replace("panitia/barang/edit/", "", $this->uri->uri_string());
+        if ($id == "panitia/barang/edit"):
+            redirect("error/error404");
+        endif;
+        $id = $this->encrypt->decode($id);
+        $header['title'] = 'Edit Data Barang';
+        $menu = $this->websession->getSession();
+        $this->checkAdmin($menu);
+        $content = array();
+        if ($this->input->server('REQUEST_METHOD') == "POST") :
+            $this->load->library("form_validation");
+            $this->form_validation->set_rules("nama_barang", "Pos Barang", "required");
+            $this->form_validation->set_message("required", "%s Harus diisi");
+            if ($this->form_validation->run() == TRUE):
+                $nama_barang = $this->input->post("nama_barang");
+                $status = $this->m_panitia->setNamaBarang($id, $nama_barang);
+                if ($status):
+                    $notif['status'] = "success";
+                    $notif['pesan'] = "Ubah Nama Barang berhasil dilakukan";
+                else:
+                    $notif['status'] = "danger";
+                    $notif['pesan'] = "Ubah Nama Barang gagal dilakukan";
+                endif;
+
+                $this->session->set_flashdata("notif", $notif);
+                redirect("panitia/barang");
+            endif;
+        endif;
+        $content['barang'] = $this->m_panitia->getSingleBarang($id);
+        $this->load->view('v_header', $header);
+        $this->load->view("panitia/v_menu_panitia", $menu);
+        $this->load->view('panitia/admin/barang/v_edit_nama_barang', $content);
+        $this->load->view('v_footer');
+    }
+
+    public function tambahBarang() {
+        $id = str_replace("panitia/barang/tambah/", "", $this->uri->uri_string());
+        if ($id != "panitia/barang/tambah"):
+            redirect("error/error404");
+        endif;
+        $id = $this->encrypt->decode($id);
+        $header['title'] = 'Tambah Barang';
+        $menu = $this->websession->getSession();
+        $this->checkAdmin($menu);
+        $content = array();
+        if ($this->input->server('REQUEST_METHOD') == "POST") :
+            $this->load->library("form_validation");
+            $this->form_validation->set_rules("nama_barang", "Nama Barang", "required");
+            $this->form_validation->set_rules("harga", "Harga Barang", "required|callback__numeric_wcomma|callback__greater_than_wcomma[0]");
+            $this->form_validation->set_message("required", "%s Harus diisi");
+            if ($this->form_validation->run() == TRUE):
+                $nama_barang = $this->input->post("nama_barang");
+                $harga_barang = str_replace(",", "", $this->input->post("harga"));
+                $status = $this->m_panitia->setNewBarang($nama_barang, $harga_barang);
+                if ($status):
+                    $notif['status'] = "success";
+                    $notif['pesan'] = "Tambah Barang berhasil dilakukan.";
+                else:
+                    $notif['status'] = "danger";
+                    $notif['pesan'] = "Tambah Barang gagal dilakukan.";
+                endif;
+
+                $this->session->set_flashdata("notif", $notif);
+                redirect("panitia/barang");
+            endif;
+        endif;
+        $this->load->view('v_header', $header);
+        $this->load->view("panitia/v_menu_panitia", $menu);
+        $this->load->view('panitia/admin/barang/v_add_barang', $content);
         $this->load->view('v_footer');
     }
 

@@ -537,6 +537,42 @@ Class M_panitia extends CI_Model {
     }
 
     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Super Admin">
+    public function getAllBarang() {
+        $sql = "SELECT id, nama_barang,harga_awal,harga_sekarang FROM barang";
+        $result = $this->db->query($sql);
+        return $result->result_array();
+    }
+    public function getSingleBarang($id) {
+        $sql = "SELECT id,nama_barang FROM barang WHERE id = ?";
+        $result = $this->db->query($sql, array($id));
+        return $result->row_array();
+    }
+    public function setNewBarang($nama_barang, $harga_barang) {
+        $this->db->trans_start();
+        $sql = "INSERT INTO barang (nama_barang,harga_awal,harga_sekarang,nilai_turun) VALUES(?,?,?,0);";
+        $this->db->query($sql, array($nama_barang, $harga_barang, $harga_barang));
+        $this->db->trans_complete();
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menambah Barang baru dengan nama = $nama_barang dan harga = $harga_barang");
+        if ($this->db->trans_status() === FALSE):
+            return FALSE;
+        else:
+            return TRUE;
+        endif;
+    }
+    public function setNamaBarang($id, $nama_barang) {
+        $this->db->trans_start();
+        $sql = "UPDATE barang SET nama_barang = ? WHERE id = ?";
+        $this->db->query($sql, array($nama_barang,$id));
+        $this->db->trans_complete();
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Meng-ubah Barang id = $id Nama Barang = $nama_barang");
+        if ($this->db->trans_status() === FALSE):
+            return FALSE;
+        else:
+            return TRUE;
+        endif;
+    }
+    // </editor-fold>
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="History Activity Panitia">
     private function setHistoryActivity($user, $activity) {

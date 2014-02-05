@@ -55,7 +55,9 @@ $route['panitia/username/tambah'] = 'panitia/addUsername';
 $route['panitia/jenis_pos/edit/(:any)'] = 'panitia/editJenisPos/$1';
 $route['panitia/jenis_pos/tambah'] = 'panitia/addJenisPos';
 $route['panitia/wewenang/edit/(:any)'] = 'panitia/editWewenang/$1';
-
+$route['panitia/barang/tambah'] = 'panitia/tambahBarang';
+$route['panitia/barang/edit/(:any)'] = 'panitia/editBarang/$1';
+$route['create/buat'] = 'create/buat';
 
 
 /* End of file routes.php */
