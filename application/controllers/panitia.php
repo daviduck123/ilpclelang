@@ -1078,7 +1078,7 @@ class Panitia extends CI_Controller {
     }
 
     // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="Super Admin">
+    // <editor-fold defaultstate="collapsed" desc="Barang">
     public function barang() {
         $header['title'] = 'Barang Pos';
         $menu = $this->websession->getSession();
