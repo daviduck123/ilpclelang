@@ -403,7 +403,7 @@ Class M_panitia extends CI_Model {
 
     public function setPemenang($id) {
         $this->db->trans_start();
-        $sql = "QUERYmu bos";
+        $sql = "CALL P_cari_pemenang($id)";
         $this->db->query($sql, array($id));
         $this->db->trans_complete();
         $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menentukan Pemenang Season dengan id = $id");
