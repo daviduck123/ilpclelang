@@ -1,0 +1,22 @@
+#logo{
+    margin-top: 10px;
+    width: auto;
+    min-height: 10px;
+    height: 35px;
+}
+#panel_jam{
+    vertical-align: middle;
+    color: white;
+}
+.clearfix:before, .clearfix:after {  
+    content: "\0020";
+    display: block;
+    height: 0;
+    visibility: hidden;    
+} 
+.clearfix:after { 
+    clear: both;
+}
+.clearfix { 
+    zoom: 1;
+}
