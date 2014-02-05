@@ -28,8 +28,8 @@
                                     <tr>
                                         <td><?php echo $index + 1; ?></td>
                                         <td><?php echo $single['nama_barang']; ?></td>
-                                        <td><?php echo $single['harga_awal']; ?></td>
-                                        <td><?php echo $single['harga_sekarang']; ?></td>
+                                        <td><?php echo number_format($single['harga_awal']); ?></td>
+                                        <td><?php echo number_format($single['harga_sekarang']); ?></td>
                                         <td><a class="btn btn-warning btnX" href="<?php echo base_url(); ?>panitia/barang/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah Data Barang</a></td>
                                     </tr>
                                 <?php endforeach; ?>

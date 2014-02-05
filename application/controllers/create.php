@@ -19,8 +19,8 @@ Class Create extends CI_Controller {
     }
 
     function buat() {
-        for ($a = 1; $a <= 40; $a++) {
-            $sql = "INSERT INTO `user`(`nama`, `username`, `password`, `jumlahuang`, status, jumlahSertifikat) VALUES ('Player$a','player$a','player$a',10000,'0','0')";
+        for ($a = 1; $a <= 10; $a++) {
+            $sql = "INSERT INTO `user`(`nama`, `username`, `password`, `jumlahuang`, status, jumlahSertifikat) VALUES ('Player$a','player$a','" . md5('player'.$a) ."',10000,'0','0')";
             $this->db->query($sql);
         }
     }
