@@ -37,7 +37,9 @@
                         </table>
                     </div>
                 </div>
-                <a class="btn btn-warning btnX" href="<?php echo base_url(); ?>panitia/barang/tambah"><span class="glyphicon glyphicon-edit"></span> Tambah Barang</a>
+                <div class="col-md-12 text-right">
+                <a class="btn btn-success btnX" href="<?php echo base_url(); ?>panitia/barang/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah Barang</a>
+                </div>
             <?php endif; ?>
         </div>
     </div>
