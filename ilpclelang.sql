@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2014 at 05:42 AM
+-- Generation Time: Feb 05, 2014 at 07:33 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ilpc_alpha`
+-- Database: `ilpclelang`
 --
 
 DELIMITER $$
@@ -273,7 +273,17 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `harga_sekarang` int(11) NOT NULL,
   `nilai_turun` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id`, `nama_barang`, `harga_awal`, `harga_sekarang`, `nilai_turun`) VALUES
+(1, 'kayu_api', 100, 100, 0),
+(2, 'air', 200, 200, 0),
+(3, 'besi', 300, 300, 0),
+(4, 'plastik', 400, 400, 0);
 
 -- --------------------------------------------------------
 
@@ -300,7 +310,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_customer` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `nama_customer`) VALUES
+(1, 'cong'),
+(2, 'bete');
 
 -- --------------------------------------------------------
 
@@ -316,6 +334,14 @@ CREATE TABLE IF NOT EXISTS `detail_lelang_jual` (
   KEY `fk_lelang_jual_customer_has_barang_lelang_jual_customer1_idx` (`lelang_jual_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `detail_lelang_jual`
+--
+
+INSERT INTO `detail_lelang_jual` (`lelang_jual_id`, `barang_id`) VALUES
+(1, 1),
+(1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -329,7 +355,20 @@ CREATE TABLE IF NOT EXISTS `history_activity_panitia` (
   `panitia_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_history_activity_panitia_panitia1_idx` (`panitia_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `history_activity_panitia`
+--
+
+INSERT INTO `history_activity_panitia` (`id`, `time`, `activity`, `panitia_id`) VALUES
+(1, '2014-02-05 12:37:48', 'Meng-ubah Barang id = 1 Nama Barang = kayu_api', 1),
+(2, '2014-02-05 13:00:24', 'Menambah Barang baru dengan nama = air dan harga = 1000', 1),
+(3, '2014-02-05 13:04:45', 'Menambah Barang baru dengan nama = besi dan harga = 200', 1),
+(4, '2014-02-05 13:07:21', 'Menambah Barang baru dengan nama = plastik dan harga = 4000', 1),
+(5, '2014-02-05 13:17:03', 'Menambahkan Season baru', 1),
+(6, '2014-02-05 13:17:35', 'Menambahkan customer dengan nama cong', 1),
+(7, '2014-02-05 13:17:45', 'Menambahkan customer dengan nama bete', 1);
 
 -- --------------------------------------------------------
 
@@ -432,7 +471,14 @@ CREATE TABLE IF NOT EXISTS `lelang_jual_customer` (
   PRIMARY KEY (`id`),
   KEY `fk_lelang_jual_customer_customer1_idx` (`customer_id`),
   KEY `fk_lelang_jual_customer_season1_idx` (`season_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `lelang_jual_customer`
+--
+
+INSERT INTO `lelang_jual_customer` (`id`, `no_lelang`, `judul_lelang`, `budget`, `deskripsi`, `jumlah`, `customer_id`, `season_id`, `status_lelang`, `nama_barang`) VALUES
+(1, '1', 'lelang_tes1', 400, 'test pertama', 6, 1, 1, '0', 'meja');
 
 -- --------------------------------------------------------
 
@@ -510,7 +556,14 @@ CREATE TABLE IF NOT EXISTS `season` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `aktif` enum('0','1','2','3') NOT NULL COMMENT '0->belum,1->persiapan,2->mulai,3->selesai',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `season`
+--
+
+INSERT INTO `season` (`id`, `aktif`) VALUES
+(1, '0');
 
 --
 -- Triggers `season`
@@ -583,7 +636,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status` enum('0','1') NOT NULL COMMENT '0->tidak login, 1->login',
   `jumlahSertifikat` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=81 ;
 
 --
 -- Triggers `user`
