@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `ilpclelang`.`panitia` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username` (`username` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 INSERT INTO `panitia` (`id`, `username`, `password`, `nama`, `status`) VALUES
