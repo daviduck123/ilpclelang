@@ -30,7 +30,7 @@
                                         <td><?php echo $single['nama_barang']; ?></td>
                                         <td><?php echo number_format($single['harga_awal']); ?></td>
                                         <td><?php echo number_format($single['harga_sekarang']); ?></td>
-                                        <td><a class="btn btn-warning btnX" href="<?php echo base_url(); ?>panitia/barang/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah Data Barang</a></td>
+                                        <td><a class="btn btn-warning btnX" href="<?php echo site_url(); ?>panitia/barang/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah Data Barang</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-right">
-                <a class="btn btn-success btnX" href="<?php echo base_url(); ?>panitia/barang/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah Barang</a>
+                <a class="btn btn-success btnX" href="<?php echo site_url(); ?>panitia/barang/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah Barang</a>
                 </div>
             <?php endif; ?>
         </div>

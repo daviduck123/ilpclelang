@@ -22,7 +22,7 @@ class Ajax extends CI_Controller {
                     $tgl = $single['time'];
                 endif;
                 $date = new DateTime($single['time']);
-                $hasil[$count]['id'] = $date->format("H:i:s");
+                $hasil[$count]['id'] = $date->format("H:i");
                 $hasil[$count][str_replace(' ', '', $single['nama_barang'])] = intval($single['harga_jual']);
             endforeach;
             echo json_encode($hasil);

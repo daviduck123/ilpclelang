@@ -30,7 +30,7 @@
                                         <td><?php echo $single['nama_pos']; ?></td>
                                         <td><?php echo $single['nama_jenis']; ?></td>
                                         <td>
-                                            <a class="btn btn-info" href="<?php echo base_url(); ?>panitia/pos/inputpos/<?php echo $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Input Pos</a>
+                                            <a class="btn btn-info" href="<?php echo site_url(); ?>panitia/pos/inputpos/<?php echo $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Input Pos</a>
                                         </td>                                
                                     </tr>
                                 <?php endforeach; ?>
@@ -42,7 +42,7 @@
             <!--Content Panel-->            
             <?php if ($status_panitia == "1"): ?>
                 <div class="col-md-12 text-right">
-                    <a class="btn btn-success btn-lg btnX" href="<?php echo base_url(); ?>panitia/pos/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah Pos</a>                                                
+                    <a class="btn btn-success btn-lg btnX" href="<?php echo site_url(); ?>panitia/pos/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah Pos</a>                                                
                 </div>
             <?php endif; ?>
         </div>

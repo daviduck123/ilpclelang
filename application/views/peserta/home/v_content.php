@@ -84,7 +84,7 @@
                                                 <td><?php echo number_format($single['jumlah']); ?></td>
                                                 <td><?php echo number_format($single['jumlah_terima']); ?></td>
                                                 <td><?php echo number_format($single['jumlah'] - $single['jumlah_terima']); ?></td>
-                                                <td><a href="<?php echo base_url() . "home/lelang/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-info"><span class="glyphicon glyphicon-list"></span> Lihat</a></td>
+                                                <td><a href="<?php echo site_url() . "home/lelang/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-info"><span class="glyphicon glyphicon-list"></span> Lihat</a></td>
                                             </tr>
                                         <?php endforeach; ?>                                        
                                     </tbody>

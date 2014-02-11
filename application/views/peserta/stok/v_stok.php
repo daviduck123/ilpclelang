@@ -10,8 +10,8 @@
                     <div class="col-md-5">Stok Saya</div>
                     &nbsp;
                     <div class="col-md-6 text-right">
-                        <a role="button" class="btn btn-primary btn-lg btnbuysell" href="<?php echo base_url(); ?>stok/buy">Buy</a>
-                        <a role="button" class="btn btn-info btn-lg btnbuysell" href="<?php echo base_url(); ?>stok/sell">Sell</a>
+                        <a role="button" class="btn btn-primary btn-lg btnbuysell" href="<?php echo site_url(); ?>stok/buy">Buy</a>
+                        <a role="button" class="btn btn-info btn-lg btnbuysell" href="<?php echo site_url(); ?>stok/sell">Sell</a>
                     </div>
                 </h2>
             </div>
@@ -55,6 +55,7 @@
 <script>var DATA;</script>
 <script src="<?php echo base_url(); ?>bootstrap/js/raphael.js"></script>
 <script src="<?php echo base_url(); ?>bootstrap/js/morris.js"></script>
+<script src="<?php echo base_url(); ?>bootstrap/js/numeral.min.js"></script>
 <script src="<?php echo base_url(); ?>bootstrap/js/fluktuasi_bt.js"></script>
 <script src="<?php echo base_url(); ?>bootstrap/js/v_fluktuasi.js"></script>
 <script>update_graph();</script>

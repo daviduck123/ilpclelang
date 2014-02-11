@@ -31,8 +31,8 @@
                                         <td><?php echo $single['username']; ?></td>
                                         <td><?php echo ($single['status'] == '1') ? "Admin" : "Anggota"; ?></td>
                                         <td>
-                                            <a class="btn btn-primary btnX" href="<?php echo base_url(); ?>panitia/username/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
-                                            <a class="btn btn-danger btnX" href="<?php echo base_url(); ?>panitia/username/reset/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-trash"></span> Reset Password</a>
+                                            <a class="btn btn-primary btnX" href="<?php echo site_url(); ?>panitia/username/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
+                                            <a class="btn btn-danger btnX" href="<?php echo site_url(); ?>panitia/username/reset/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-trash"></span> Reset Password</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -40,7 +40,7 @@
                         </table>
                     <?php endif; ?>
                     <div class="col-md-2 col-md-offset-10">
-                        <a href="<?php echo base_url(); ?>panitia/username/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                        <a href="<?php echo site_url(); ?>panitia/username/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
                     </div>
                 </div>
             </div>

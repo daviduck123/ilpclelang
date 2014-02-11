@@ -50,8 +50,8 @@
                                                         ?>
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-primary" href="<?php echo base_url() . "panitia/lelang/lihat/" . $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Lihat</a>
-                                                        <a class="btn btn-info" <?php echo ($single['status_lelang'] != 0) ? "disabled" : ""; ?> href="<?php echo (($single['status_lelang'] == 0) ? base_url() . "panitia/lelang/edit/" . $this->encrypt->encode($single['id']) : ""); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
+                                                        <a class="btn btn-primary" href="<?php echo site_url() . "panitia/lelang/lihat/" . $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Lihat</a>
+                                                        <a class="btn btn-info" <?php echo ($single['status_lelang'] != 0) ? "disabled" : ""; ?> href="<?php echo (($single['status_lelang'] == 0) ? site_url() . "panitia/lelang/edit/" . $this->encrypt->encode($single['id']) : ""); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -65,7 +65,7 @@
             <?php endif; ?>
             <br/>
             <div class="col-md-2 col-md-offset-10">
-                <a href="<?php echo base_url(); ?>panitia/lelang/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                <a href="<?php echo site_url(); ?>panitia/lelang/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>               
         </div>
     </div>

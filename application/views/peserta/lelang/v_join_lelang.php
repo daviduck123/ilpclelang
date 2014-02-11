@@ -57,7 +57,7 @@
             <?php if (!empty($deskripsi['time'])): ?>
                 <div class="form-group clearfix">
                     <div class="col-md-9 col-md-offset-3 text-right">
-                        <h4>Anda Sudah Mengikuti Lelang silahkan dicek di Home anda <a class="btn btn-info" href="<?php echo base_url() . "lelang" ?>">Kembali</a></h4>
+                        <h4>Anda Sudah Mengikuti Lelang silahkan dicek di Home anda <a class="btn btn-info" href="<?php echo site_url() . "lelang" ?>">Kembali</a></h4>
                     </div>
                 </div>    
                 &nbsp;
@@ -88,7 +88,7 @@
         <?php else: ?>
             <div class="form-group clearfix">
                 <div class="col-md-4 col-md-offset-8 text-right">
-                    <a class="btn btn-info btn-lg" href="<?php echo base_url() . "lelang" ?>">Kembali</a>
+                    <a class="btn btn-info btn-lg" href="<?php echo site_url() . "lelang" ?>">Kembali</a>
                 </div>
             </div>    
             &nbsp;
@@ -98,7 +98,7 @@
     <div class="col-md-12" style="min-height: 50%;">
         <div class="well">
             <h2>Lelang Tidak ditemukan atau Sesi Lelang Masih ditutup!!!!</h2>
-            <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo base_url() . "lelang" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
+            <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo site_url() . "lelang" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
         </div>
     </div>
 <?php endif; ?>

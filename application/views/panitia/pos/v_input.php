@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url(); ?>panitia/pos">Pos</a></li>                            
+        <li><a href="<?php echo site_url(); ?>panitia/pos">Pos</a></li>                            
         <li class="active">Input Pos</li>
     </ol>
     <div class="panel panel-default">
@@ -55,7 +55,7 @@
                                                 ?>
                                             </div>
                                             <?php if ($status_panitia == "1"): ?>
-                                                <a class="btn btn-warning btn-lg btnX" href="<?php echo base_url(); ?>panitia/pos/ubahstatus/<?php echo $this->encrypt->encode($single['id']) . "|" . $this->encrypt->encode($idpos); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>                                                
+                                                <a class="btn btn-warning btn-lg btnX" href="<?php echo site_url(); ?>panitia/pos/ubahstatus/<?php echo $this->encrypt->encode($single['id']) . "|" . $this->encrypt->encode($idpos); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a>                                                
                                             <?php endif; ?>
                                         </td>
                                     </tr>

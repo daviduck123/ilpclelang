@@ -32,7 +32,7 @@
                                         <td class="text-right"><?php echo number_format($single['sertifikat_kalah']); ?></td>
                                         <td class="text-right"><?php echo number_format($single['uang_menang']); ?></td>
                                         <td class="text-right"><?php echo number_format($single['uang_kalah']); ?></td>
-                                        <td><a class="btn btn-primary btnX" href="<?php echo base_url(); ?>panitia/jenis_pos/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a></td>
+                                        <td><a class="btn btn-primary btnX" href="<?php echo site_url(); ?>panitia/jenis_pos/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -41,7 +41,7 @@
                 </div>
             <?php endif; ?>
             <div class="col-md-2 col-md-offset-10">
-                <a href="<?php echo base_url(); ?>panitia/jenis_pos/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                <a href="<?php echo site_url(); ?>panitia/jenis_pos/tambah" class="btn btn-success btn-lg btnX"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>
         </div>
     </div>

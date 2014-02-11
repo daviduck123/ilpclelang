@@ -55,7 +55,7 @@
         </div>
         <div class="form-group clearfix">
             <div class="col-md-4 col-md-offset-8 text-right">
-                <a class="btn btn-info btn-lg" href="<?php echo base_url() . "home" ?>">Kembali</a>
+                <a class="btn btn-info btn-lg" href="<?php echo site_url() . "home" ?>">Kembali</a>
             </div>
         </div>    
         &nbsp;
@@ -64,7 +64,7 @@
     <div class="col-md-12" style="min-height: 50%;">
         <div class="well">
             <h2>Detail lelang tidak ditemukan!!!!</h2>
-            <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo base_url() . "home" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
+            <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo site_url() . "home" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
         </div>
     </div>
 <?php endif; ?>

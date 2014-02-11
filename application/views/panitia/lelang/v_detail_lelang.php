@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url(); ?>panitia/lelang">Lelang</a></li>                            
+        <li><a href="<?php echo site_url(); ?>panitia/lelang">Lelang</a></li>                            
         <li class="active">Detail</li>                            
     </ol>    
     <div class="panel panel-default">
@@ -52,7 +52,7 @@
                 </div>
                 <?php if ($lelang['status_lelang'] != '0'): ?>
                     <div class="col-md-4 col-md-offset-8 text-right">
-                        <a href="<?php echo base_url(); ?>panitia/lelang/peserta/<?php echo $this->encrypt->encode($lelang['id']); ?>" class="btn btn-lg btn-info btnX"><span class="glyphicon glyphicon-tasks"></span> Lihat Peserta</a>
+                        <a href="<?php echo site_url(); ?>panitia/lelang/peserta/<?php echo $this->encrypt->encode($lelang['id']); ?>" class="btn btn-lg btn-info btnX"><span class="glyphicon glyphicon-tasks"></span> Lihat Peserta</a>
                     </div>
                 <?php endif; ?>
             <?php endif; ?>

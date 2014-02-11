@@ -1,4 +1,4 @@
-<form method="get" action="<?php base_url();?>create/pass">
+<form method="get" action="<?php site_url();?>create/pass">
     <input type="text" name="pass">
     <input type="submit">
 </form>

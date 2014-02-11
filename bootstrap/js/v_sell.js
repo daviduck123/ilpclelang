@@ -90,7 +90,7 @@ var update_graph = function() {
         dataType: "json",
         data: {csrf_token_name: csrf},
         type: "POST",
-        url: SITE_URL + strurl,
+        url: URL + strurl,
         success: function(result) {
             DATA = result;
             loadgraph(DATA);

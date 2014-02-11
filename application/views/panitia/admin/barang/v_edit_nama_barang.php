@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <ol class="breadcrumb">     
-        <li><a href="<?php echo base_url(); ?>panitia/barang">Barang</a></li>
+        <li><a href="<?php echo site_url(); ?>panitia/barang">Barang</a></li>
         <li class="active">Edit</li>                            
     </ol>    
     <div class="panel panel-default">

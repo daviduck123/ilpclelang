@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url(); ?>panitia/lelang">Lelang</a></li>                            
-        <li><a href="<?php echo base_url(); ?>panitia/lelang/lihat/<?php echo $this->encrypt->encode($id); ?>">Detail</a></li>                            
+        <li><a href="<?php echo site_url(); ?>panitia/lelang">Lelang</a></li>                            
+        <li><a href="<?php echo site_url(); ?>panitia/lelang/lihat/<?php echo $this->encrypt->encode($id); ?>">Detail</a></li>                            
         <li class="active">Peserta</li>                            
     </ol>    
     <div class="panel panel-default">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-8 text-right">
-                    <a href="<?php echo base_url(); ?>panitia/lelang/lihat/<?php echo $this->encrypt->encode($id); ?>" class="btn btn-lg btn-info btnX"><span class="glyphicon glyphicon-tasks"></span> Kembali</a>
+                    <a href="<?php echo site_url(); ?>panitia/lelang/lihat/<?php echo $this->encrypt->encode($id); ?>" class="btn btn-lg btn-info btnX"><span class="glyphicon glyphicon-tasks"></span> Kembali</a>
                 </div>
             <?php endif; ?>
         </div>

@@ -23,13 +23,13 @@
                                 <tr>
                                     <td><?php echo $index + 1; ?></td>
                                     <td><?php echo $single['nama_customer']; ?></td>
-                                    <td><a class="btn btn-info" href="<?php echo base_url() ?>panitia/customer/edit/<?php echo $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a></td>
+                                    <td><a class="btn btn-info" href="<?php echo site_url() ?>panitia/customer/edit/<?php echo $this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Ubah</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                     <div class="col-md-2 col-md-offset-8 text-right">
-                        <a class="btn btn-success" href="<?php echo base_url() ?>panitia/customer/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+                        <a class="btn btn-success" href="<?php echo site_url() ?>panitia/customer/tambah"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
                     </div>
                 </div>
             </div>

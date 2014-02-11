@@ -122,7 +122,7 @@ class Stok extends CI_Controller {
                 $total += preg_replace("/([^0-9\\.])/i", "", $single) * intval($dataHarga[$index - 1]['harga_sekarang'] * 0.5);
                 $this->form_validation->set_rules("jumlah[$index]", "Angka Barang no $index", "required|callback__greater_than_wcomma[-1]|callback__less_than_wcomma[" . ($stokSekarang + 1) . "]|callback__numeric_wcomma");
             endforeach;
-            $this->form_validation->set_rules('grandTotal', 'Total Jual', "callback__checkIsi|callback__checkTotal[$total]|callback__numeric_wcomma");
+            //$this->form_validation->set_rules('grandTotal', 'Total Jual', "callback__checkIsi|callback__checkTotal[$total]|callback__numeric_wcomma");
             //setting pesan
             $this->form_validation->set_message('required', "%s harus diisi");
             $this->form_validation->set_message('_checkIsi', "penjualan minimal 1 barang");

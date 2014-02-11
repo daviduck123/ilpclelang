@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-1 col-md-offset-10">
-                                        <a href="<?php echo base_url() . "lelang/detail/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-primary">Lihat Lelang</a>
+                                        <a href="<?php echo site_url() . "lelang/detail/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-primary">Lihat Lelang</a>
                                     </div>
                                 </div>
                             </div>

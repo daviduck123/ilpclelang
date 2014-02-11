@@ -23,7 +23,7 @@
                                 <tr>
                                     <td><?php echo $single['nama']; ?></td>
                                     <td><?php echo ($single['status'] == "0") ? "Tidak Login" : "Sedang Login"; ?></td>
-                                    <td><a <?php echo ($single['status'] == "0") ? "disabled" : ""; ?> class="btn btn-lg btn-warning btnX" href="<?php echo ($single['status'] == "0") ? "" : base_url()."panitia/peserta/".$this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Ganti Login</a></td>
+                                    <td><a <?php echo ($single['status'] == "0") ? "disabled" : ""; ?> class="btn btn-lg btn-warning btnX" href="<?php echo ($single['status'] == "0") ? "" : site_url()."panitia/peserta/".$this->encrypt->encode($single['id']); ?>"><span class="glyphicon glyphicon-edit"></span> Ganti Login</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

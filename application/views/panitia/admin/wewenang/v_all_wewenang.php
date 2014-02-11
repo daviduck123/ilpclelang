@@ -26,7 +26,7 @@
                                     <tr>
                                         <td><?php echo $index + 1; ?></td>
                                         <td><?php echo $single['nama']; ?></td>
-                                        <td><a class="btn btn-warning btnX" href="<?php echo base_url(); ?>panitia/wewenang/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah Wewenang</a></td>
+                                        <td><a class="btn btn-warning btnX" href="<?php echo site_url(); ?>panitia/wewenang/edit/<?php echo $this->encrypt->encode($single['id']) ?>"><span class="glyphicon glyphicon-edit"></span> Ubah Wewenang</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
