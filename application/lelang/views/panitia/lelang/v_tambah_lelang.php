@@ -73,7 +73,7 @@
                                     ?>
                                     <div class="col-md-3">
                                         <?php echo form_checkbox(array("name" => "barang[" . $single['id'] . "]", "value" => $single["id"], "checked" => set_checkbox("barang", $single['id']))); ?>
-                                        <?php echo $single['nama_barang']; ?>
+                                        <?php echo $single['nama_barang'] . " - " . number_format($single['stok']);  ?>
                                     </div>
                                     <?php
                                     if ($count == 3):

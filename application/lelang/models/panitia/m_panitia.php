@@ -160,7 +160,12 @@ Class M_panitia extends CI_Model {
     }
 
     public function getSemuaBarang() {
-        $sql = "select id, nama_barang from barang";
+        $sql = "SELECT b.id,b.nama_barang, (
+                SELECT SUM( stok_user -lock_user) 
+                FROM user_barang
+                WHERE barang_id = b.id
+                ) AS stok
+                FROM barang b";
         $result = $this->db->query($sql);
         return $result->result_array();
     }
@@ -608,7 +613,7 @@ Class M_panitia extends CI_Model {
                 SELECT COUNT( * )
                 FROM history_modal
                 WHERE user_id = u.id
-                ) AS jumlahpos
+                ) AS jumlahpos, u.jumlahuang
                 FROM user U
                 ORDER BY u.jumlahSertifikat DESC ";
         $result = $this->db->query($sql);

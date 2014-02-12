@@ -19,6 +19,7 @@
                                             <th>Nama Tim</th>
                                             <th>Jumlah Sertifikat</th>
                                             <th>Jumlah Pos</th>
+                                            <th>Jumlah Uang</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -28,6 +29,7 @@
                                                 <td><?php echo $single['nama']; ?></td>
                                                 <td><?php echo $single['jumlahSertifikat']; ?></td>
                                                 <td><?php echo $single['jumlahpos']; ?></td>
+                                                <td><?php echo $single['jumlahuang']; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
