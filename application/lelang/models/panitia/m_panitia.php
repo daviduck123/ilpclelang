@@ -562,7 +562,7 @@ Class M_panitia extends CI_Model {
     }
 
     // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="Super Admin">
+    // <editor-fold defaultstate="collapsed" desc="Barang">
     public function getAllBarang() {
         $sql = "SELECT id, nama_barang,harga_awal,harga_sekarang FROM barang";
         $result = $this->db->query($sql);
@@ -602,6 +602,31 @@ Class M_panitia extends CI_Model {
     }
 
     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Rekap Rally">
+    public function getAllSertifikatPeserta() {
+        $sql = "SELECT u.nama, u.jumlahSertifikat, (
+                SELECT COUNT( * )
+                FROM history_modal
+                WHERE user_id = u.id
+                ) AS jumlahpos
+                FROM user U
+                ORDER BY u.jumlahSertifikat DESC ";
+        $result = $this->db->query($sql);
+        return $result->result_array();
+    }
+    public function getAllUangPeserta() {
+        $sql = "SELECT u.nama, (
+                SELECT SUM( (jumlah_terima * harga) + (0.3*(jumlah_terima * harga)) )
+                FROM user_lelang_jual
+                WHERE STATUS = '1'
+                AND user_id = u.id
+                GROUP BY user_id
+                ) AS jumlahlelang, u.jumlahuang
+                FROM user u
+                ORDER BY jumlahlelang DESC ";
+        $result = $this->db->query($sql);
+        return $result->result_array();
+    }
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="History Activity Panitia">
     private function setHistoryActivity($user, $activity) {

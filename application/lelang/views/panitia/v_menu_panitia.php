@@ -19,6 +19,7 @@
                         <li class="dropdown <?php echo ($this->uri->segment(2) == "jenis_pos") ? "active" : '' ?>"><a href="<?php echo site_url() ?>panitia/jenis_pos"><span class="glyphicon glyphicon-star"></span> Jenis Pos</a></li>
                         <li class="dropdown <?php echo ($this->uri->segment(2) == "wewenang") ? "active" : '' ?>"><a href="<?php echo site_url() ?>panitia/wewenang"><span class="glyphicon glyphicon-star"></span> Wewenang Pos</a></li>
                         <li class="dropdown <?php echo ($this->uri->segment(2) == "barang") ? "active" : '' ?>"><a href="<?php echo site_url() ?>panitia/barang"><span class="glyphicon glyphicon-star"></span> Barang</a></li>
+                        <li class="dropdown <?php echo ($this->uri->segment(2) == "rekap") ? "active" : '' ?>"><a href="<?php echo site_url() ?>panitia/rekap"><span class="glyphicon glyphicon-star"></span> Rekap</a></li>
                     <?php endif; ?>
                     <li><a href="<?php echo site_url() ?>login/logoutPanitia"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                 </ul>

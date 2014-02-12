@@ -1194,6 +1194,19 @@ class Panitia extends CI_Controller {
     }
 
     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Rekap">
+    public function rekap() {
+        $header['title'] = 'Rekap Pemenang';
+        $menu = $this->websession->getSession();
+        $this->checkAdmin($menu);
+        $content = array();
+        $content['pemenang_rally'] = $this->m_panitia->getAllSertifikatPeserta();
+        $content['pemenang_lelang'] = $this->m_panitia->getAllUangPeserta();
+        $this->load->view('v_header', $header);
+        $this->load->view("panitia/v_menu_panitia", $menu);
+        $this->load->view('panitia/admin/rekap/v_rekap', $content);
+        $this->load->view('v_footer');
+    }
     // </editor-fold>
 }
 
