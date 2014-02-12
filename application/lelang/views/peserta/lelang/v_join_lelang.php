@@ -53,7 +53,7 @@
                 </table>
             </div>
         </div>
-        <?php if ($deskripsi['aktif'] == 2): ?>
+        <?php if (($deskripsi['aktif'] == 2)&&($statusLelang == '1')): ?>
             <?php if (!empty($deskripsi['time'])): ?>
                 <div class="form-group clearfix">
                     <div class="col-md-9 col-md-offset-3 text-right">

@@ -523,6 +523,34 @@ class Panitia extends CI_Controller {
     }
 
     // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Ijin Lelang Peserta">
+    public function ijin() {
+        $header['title'] = 'Ijin Lelang Peserta';
+        $menu = $this->websession->getSession();
+        $content = array();
+        $id = str_replace("panitia/ijin/", "", $this->uri->uri_string());
+        if ($id != "panitia/ijin"):
+            $id = $this->encrypt->decode($id);
+            echo $id;
+            $status = $this->m_panitia->setEditIjinPeserta($id);
+            $notif = array();
+            if ($status):
+                $notif['status'] = "success";
+                $notif['pesan'] = "Ubah Ijin Lelang Peserta berhasil dilakukan";
+            else:
+                $notif['status'] = "danger";
+                $notif['pesan'] = "Ubah Ijin Lelang Peserta dilakukan";
+            endif;
+            $content['notif'] = $notif;
+        endif;
+        $content['peserta'] = $this->m_panitia->getAllIjinPeserta();
+        $this->load->view('v_header', $header);
+        $this->load->view("panitia/v_menu_panitia", $menu);
+        $this->load->view('panitia/lelang_peserta/v_lelang_peserta', $content);
+        $this->load->view('v_footer');
+    }
+
+    // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Chat">
     public function chat() {
         $header['title'] = 'Chat';

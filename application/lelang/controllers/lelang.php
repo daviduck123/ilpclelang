@@ -60,12 +60,14 @@ class Lelang extends CI_Controller {
         $menu = $this->websession->getSession();
         $content = array();
         $statusLelang = $this->m_peserta->getStatusLelang();
+        $ijinlelang = $this->m_peserta->getIjinLelang();
         $cekLelangDatabase = $this->m_peserta->getLelangDatabase($id);
         $content = $this->m_peserta->getDetailLelang($this->session->userdata('peserta_id'), $id);
+        $content['statusLelang'] = $ijinlelang['statuslelang'];
         $content['status']["class"] = (empty($statusLelang)) ? "red" : (($statusLelang["aktif"] == '1') ? "blue" : "green");
         $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Lelang" : "Pendaftaran Lelang");
         if (($this->input->server('REQUEST_METHOD') == "POST") && (!empty($cekLelangDatabase))):
-            if (($cekLelangDatabase['season_id'] == $statusLelang['id']) && ($statusLelang['aktif'] == "2")):
+            if (($cekLelangDatabase['season_id'] == $statusLelang['id']) && ($statusLelang['aktif'] == "2") && ($ijinlelang['statuslelang'] == "1")):
                 $this->load->library('form_validation');
                 //cari nilai max lelang
                 $max = PHP_INT_MAX;
@@ -93,7 +95,7 @@ class Lelang extends CI_Controller {
                 endif;
             elseif ($statusLelang == "1"):
                 $this->session->set_flashdata('notif', array("jenis" => "danger", "pesan" => "Pengikutan Lelang no $id  Gagal karena season $id ditutup"));
-                redirect("lelang");            
+                redirect("lelang");
             endif;
         endif;
         $this->load->view('v_header', $header);

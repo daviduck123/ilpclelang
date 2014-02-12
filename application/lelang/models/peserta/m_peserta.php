@@ -109,6 +109,12 @@ class m_peserta extends CI_Model {
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="Lelang">  
+    public function getIjinLelang(){
+        $sql = "SELECT statuslelang FROM user WHERE id = ?";
+        $result = $this->db->query($sql,array($this->session->userdata('peserta_id')));
+        return $result->row_array();
+    }
+    
     public function getStatusLelang() {
         $sql = "SELECT id, aktif FROM season WHERE aktif = '1' OR aktif = '2'";
         $result = $this->db->query($sql);

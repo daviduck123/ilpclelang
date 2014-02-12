@@ -81,6 +81,10 @@ Class M_panitia extends CI_Model {
         $this->db->trans_start();
         $sql = "UPDATE season SET aktif = ? WHERE id = ?";
         $this->db->query($sql, array($status, $id));
+        if($status == '3'):
+            $sql = "UPDATE user SET statuslelang = '0'";
+            $this->db->query($sql);
+        endif;
         $this->db->trans_complete();
         $this->setHistoryActivity($this->session->userdata("panitia_id"), "Mengganti season dengan id = $id, status = $status ");
         if ($this->db->trans_status() === FALSE):
@@ -248,6 +252,27 @@ Class M_panitia extends CI_Model {
     }
 
     // </editor-fold>    
+    // <editor-fold defaultstate="collapsed" desc="Ijin Lelang">
+    public function getAllIjinPeserta() {
+        $sql = "SELECT id, nama, statuslelang as 'status' FROM user";
+        $result = $this->db->query($sql);
+        return $result->result_array();
+    }
+
+    public function setEditIjinPeserta($peserta) {
+        $this->db->trans_start();
+        $sql = "UPDATE user SET statuslelang = '1' WHERE id = ? AND statuslelang = '0'";
+        $this->db->query($sql, array($peserta));
+        $this->db->trans_complete();
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Mengganti status lelang peserta = $peserta menjadi 1");
+        if ($this->db->trans_status() === FALSE):
+            return FALSE;
+        else:
+            return TRUE;
+        endif;
+    }
+
+    // </editor-fold>    
     // <editor-fold defaultstate="collapsed" desc="chat">
     public function getAllChat() {
         $sql = "SELECT c.chat, c.time, p.nama FROM chat c INNER JOIN panitia p ON c.panitia_id = p.id ORDER BY c.time DESC";
@@ -368,7 +393,7 @@ Class M_panitia extends CI_Model {
         $sql = "INSERT INTO jenis_pos (nama_jenis, sertifikat_menang, sertifikat_kalah, uang_menang, uang_kalah) VALUES(?,?,?,?,?);";
         $this->db->query($sql, array($data['nama'], $data['sertifikat_menang'], $data['sertifikat_kalah'], $data['uang_menang'], $data['uang_kalah']));
         $this->db->trans_complete();
-        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menambahkan Jenis_Pos dengan data nama = ".$data['nama'].", sertifikat menang = ".$data['sertifikat_menang']. ", sertifikat kalah = ".$data['sertifikat_kalah'].", uang menang = ".$data['uang_menang'].", uang kalah = ".$data['uang_kalah']);
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menambahkan Jenis_Pos dengan data nama = " . $data['nama'] . ", sertifikat menang = " . $data['sertifikat_menang'] . ", sertifikat kalah = " . $data['sertifikat_kalah'] . ", uang menang = " . $data['uang_menang'] . ", uang kalah = " . $data['uang_kalah']);
         if ($this->db->trans_status() === FALSE):
             return FALSE;
         else:
@@ -381,7 +406,7 @@ Class M_panitia extends CI_Model {
         $sql = "UPDATE jenis_pos SET nama_jenis = ?, sertifikat_menang = ?, sertifikat_kalah = ?, uang_menang = ?, uang_kalah = ? WHERE id = ?";
         $this->db->query($sql, array($data['nama'], $data['sertifikat_menang'], $data['sertifikat_kalah'], $data['uang_menang'], $data['uang_kalah'], $id));
         $this->db->trans_complete();
-        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Mengedit Jenis_Pos yang memiliki id = $id dengan data nama = ".$data['nama'].", sertifikat menang = ".$data['sertifikat_menang']. ", sertifikat kalah = ".$data['sertifikat_kalah'].", uang menang = ".$data['uang_menang'].", uang kalah = ".$data['uang_kalah']);
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Mengedit Jenis_Pos yang memiliki id = $id dengan data nama = " . $data['nama'] . ", sertifikat menang = " . $data['sertifikat_menang'] . ", sertifikat kalah = " . $data['sertifikat_kalah'] . ", uang menang = " . $data['uang_menang'] . ", uang kalah = " . $data['uang_kalah']);
         if ($this->db->trans_status() === FALSE):
             return FALSE;
         else:
@@ -407,7 +432,7 @@ Class M_panitia extends CI_Model {
         $this->db->query($sql, array($id));
         $this->db->trans_complete();
         $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menentukan Pemenang Season dengan id = $id");
-        
+
         if ($this->db->trans_status() === FALSE):
             return FALSE;
         else:
@@ -543,11 +568,13 @@ Class M_panitia extends CI_Model {
         $result = $this->db->query($sql);
         return $result->result_array();
     }
+
     public function getSingleBarang($id) {
         $sql = "SELECT id,nama_barang FROM barang WHERE id = ?";
         $result = $this->db->query($sql, array($id));
         return $result->row_array();
     }
+
     public function setNewBarang($nama_barang, $harga_barang) {
         $this->db->trans_start();
         $sql = "INSERT INTO barang (nama_barang,harga_awal,harga_sekarang,nilai_turun) VALUES(?,?,?,0);";
@@ -560,10 +587,11 @@ Class M_panitia extends CI_Model {
             return TRUE;
         endif;
     }
+
     public function setNamaBarang($id, $nama_barang) {
         $this->db->trans_start();
         $sql = "UPDATE barang SET nama_barang = ? WHERE id = ?";
-        $this->db->query($sql, array($nama_barang,$id));
+        $this->db->query($sql, array($nama_barang, $id));
         $this->db->trans_complete();
         $this->setHistoryActivity($this->session->userdata("panitia_id"), "Meng-ubah Barang id = $id Nama Barang = $nama_barang");
         if ($this->db->trans_status() === FALSE):
@@ -572,6 +600,7 @@ Class M_panitia extends CI_Model {
             return TRUE;
         endif;
     }
+
     // </editor-fold>
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="History Activity Panitia">
@@ -586,6 +615,7 @@ Class M_panitia extends CI_Model {
             return TRUE;
         endif;
     }
+
     // </editor-fold>
 }
 

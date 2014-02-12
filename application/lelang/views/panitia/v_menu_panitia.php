@@ -6,6 +6,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li <?php echo ($this->uri->segment(2) == NULL) ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li <?php echo ($this->uri->segment(2) == "pos") ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia/pos"><span class="glyphicon glyphicon-list-alt"></span> Pos</a></li>
+                    <li <?php echo ($this->uri->segment(2) == "ijin") ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia/ijin"><span class="glyphicon glyphicon-cog"></span> Ijin Peserta</a></li>
                     <li <?php echo ($this->uri->segment(2) == "season") ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia/season"><span class="glyphicon glyphicon-cloud"></span> Season</a></li>
                     <li <?php echo ($this->uri->segment(2) == "customer") ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia/customer"><span class="glyphicon glyphicon-usd"></span> Customer</a></li>
                     <li <?php echo ($this->uri->segment(2) == "lelang") ? "class='active'" : '' ?>><a href="<?php echo site_url() ?>panitia/lelang"><span class="glyphicon glyphicon-file"></span> Lelang</a></li>
