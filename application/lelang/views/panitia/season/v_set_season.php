@@ -86,7 +86,11 @@
             <?php endif; ?>
             <?php if ($status_panitia == "1"): ?>
                 <div class="col-md-12 text-right">
-                    <a class="btn btn-success btn-lg btnX" href="<?php echo base_url(); ?>panitia/setAddSeason/"><span class="glyphicon glyphicon-plus"></span> Tambah Season</a>                                                
+                    <a class="btn btn-success btn-lg btnX" href="<?php echo base_url(); ?>panitia/setAddSeason/"><span class="glyphicon glyphicon-plus"></span> Tambah Season</a>                                      
+                    <?php
+                    if ($status_semua_lelang == "1"): ?>
+                        <a class="btn btn-warning btn-lg btnX" href="<?php echo base_url(); ?>panitia/jualSemuaBarang"><span class="glyphicon glyphicon-share"></span> Jual Barang Peserta</a>                                      
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>

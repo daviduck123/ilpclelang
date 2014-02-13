@@ -70,7 +70,19 @@ Class M_panitia extends CI_Model {
         $result = $this->db->query($sql, array($id));
         return $result->row_array();
     }
-
+    
+    public function getStatusLelangTerakhir() {
+        $sql = "SELECT IF( season_id ='4'
+                AND status_lelang ='2',  '1',  '0' ) AS 
+                STATUS 
+                FROM lelang_jual_customer
+                ORDER BY id DESC 
+                LIMIT 1";
+        $result = $this->db->query($sql);
+        $row = $result->row();
+        return $row->STATUS;
+    }
+    
     public function disabledStatus($id) {
         $sql = "SELECT id FROM season WHERE id <> ? AND (aktif = '1' OR aktif = '2')";
         $result = $this->db->query($sql, array($id));
@@ -451,6 +463,19 @@ Class M_panitia extends CI_Model {
         $this->db->query($sql);
         $this->db->trans_complete();
         $this->setHistoryActivity($this->session->userdata("panitia_id"), "Menambahkan Season baru");
+        if ($this->db->trans_status() === FALSE):
+            return FALSE;
+        else:
+            return TRUE;
+        endif;
+    }
+    
+    public function setJualStokPeserta() {
+        $this->db->trans_start();
+        $sql = "CALL P_sell_all(". $this->session->userdata("panitia_id") .");";
+        $this->db->query($sql);
+        $this->db->trans_complete();
+        $this->setHistoryActivity($this->session->userdata("panitia_id"), "Memanggil procedure P_sell_all");
         if ($this->db->trans_status() === FALSE):
             return FALSE;
         else:

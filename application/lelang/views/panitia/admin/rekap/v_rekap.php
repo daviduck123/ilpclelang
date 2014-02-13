@@ -29,7 +29,7 @@
                                                 <td><?php echo $single['nama']; ?></td>
                                                 <td><?php echo $single['jumlahSertifikat']; ?></td>
                                                 <td><?php echo $single['jumlahpos']; ?></td>
-                                                <td><?php echo $single['jumlahuang']; ?></td>
+                                                <td class="text-right"><?php echo number_format($single['jumlahuang']); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -62,8 +62,8 @@
                                             <tr>
                                                 <td><?php echo $index + 1; ?></td>
                                                 <td><?php echo $single['nama']; ?></td>
-                                                <td><?php echo number_format($single['jumlahlelang']); ?></td>
-                                                <td><?php echo number_format($single['jumlahuang']); ?></td>
+                                                <td class="text-right"><?php echo number_format($single['jumlahlelang']); ?></td>
+                                                <td class="text-right"><?php echo number_format($single['jumlahuang']); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

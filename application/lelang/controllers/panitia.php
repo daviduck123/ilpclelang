@@ -157,6 +157,7 @@ class Panitia extends CI_Controller {
         $content['season'] = $database['season'];
         $content['jalan'] = $database['jalan'];
         $content['status_panitia'] = $menu['status'];
+        $content['status_semua_lelang'] = $this->m_panitia->getStatusLelangTerakhir();
         $this->load->view('v_header', $header);
         $this->load->view("panitia/v_menu_panitia", $menu);
         $this->load->view('panitia/season/v_set_season', $content);
@@ -917,6 +918,26 @@ class Panitia extends CI_Controller {
         else:
             $notif['status'] = "danger";
             $notif['pesan'] = "Pemenang Season  $id gagal ditentukan";
+        endif;
+        $this->session->set_flashdata("notif", $notif);
+        redirect("panitia/season");
+    }
+    public function jualSemuaBarang() {
+        $id = str_replace("panitia/jualSemuaBarang/", "", $this->uri->uri_string());
+        if ($id != "panitia/jualSemuaBarang"):
+            redirect("error/error404");
+        endif;
+        $menu = $this->websession->getSession();
+        $this->checkAdmin($menu);
+        $notif = array();
+        $status = $this->m_panitia->setJualStokPeserta();
+        $status2 = $this->m_panitia->Check_lelang_berakhir();
+        if ($status):
+            $notif['status'] = "success";
+            $notif['pesan'] = "Semua stok peserta telah berhasil dijual";
+        else:
+            $notif['status'] = "danger";
+            $notif['pesan'] = "Semua stok peserta gagal dijual";
         endif;
         $this->session->set_flashdata("notif", $notif);
         redirect("panitia/season");
