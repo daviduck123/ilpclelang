@@ -7,7 +7,7 @@
             <?php endif; ?>
 
             <div class="page-header">
-                <h3>Status Lelang : <span class="<?php echo $status["class"]; ?>"><?php echo $status["pesan"]; ?></span></h3>
+                <h3>Status Pengadaan : <span class="<?php echo $status["class"]; ?>"><?php echo $status["pesan"]; ?></span></h3>
             </div>
             <div class="panel-group" id="accordion">
                 <?php foreach ($daftarLelang as $index => $single): ?>
@@ -32,8 +32,8 @@
                                     </dl>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-1 col-md-offset-10">
-                                        <a href="<?php echo site_url() . "lelang/detail/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-primary">Lihat Lelang</a>
+                                    <div class="col-md-1 col-md-offset-9">
+                                        <a href="<?php echo site_url() . "lelang/detail/" . $this->encrypt->encode($single['id']); ?>" class="btn btn-primary">Lihat Pengadaan</a>
                                     </div>
                                 </div>
                             </div>

@@ -14,7 +14,7 @@
                         <th>No</th>
                         <th>Nama Barang</th>
                         <th>Harga Jual NPC</th>
-                        <th>Stok Bebas Lelang</th>
+                        <th>Stok Bebas Pengadaan</th>
                         <th class="col-md-2">Jumlah</th>
                         <th class="col-md-3">Total Harga</th>
                     </tr>                       

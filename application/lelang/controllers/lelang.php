@@ -25,7 +25,7 @@ class Lelang extends CI_Controller {
         $content['notif'] = $this->session->flashdata('notif');
         $content['daftarLelang'] = $this->m_peserta->getListLelang($this->session->userdata('peserta_id'));
         $content['status']["class"] = (empty($statusLelang)) ? "red" : (($statusLelang["aktif"] == '1') ? "blue" : "green");
-        $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Lelang" : "Pendaftaran Lelang");
+        $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Pengadaan" : "Pendaftaran Pengadaan");
         //$content['notif'] = $this->session->flashdata('notif');
         $this->load->view('v_header', $header);
         $this->load->view('v_menu', $menu);
@@ -65,7 +65,7 @@ class Lelang extends CI_Controller {
         $content = $this->m_peserta->getDetailLelang($this->session->userdata('peserta_id'), $id);
         $content['statusLelang'] = $ijinlelang['statuslelang'];
         $content['status']["class"] = (empty($statusLelang)) ? "red" : (($statusLelang["aktif"] == '1') ? "blue" : "green");
-        $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Lelang" : "Pendaftaran Lelang");
+        $content['status']["pesan"] = (empty($statusLelang)) ? "Sedang Tutup" : (($statusLelang["aktif"] == '1') ? "Pengumuman Pengadaan" : "Pendaftaran Pengadaan");
         if (($this->input->server('REQUEST_METHOD') == "POST") && (!empty($cekLelangDatabase))):
             if (($cekLelangDatabase['season_id'] == $statusLelang['id']) && ($statusLelang['aktif'] == "2") && ($ijinlelang['statuslelang'] == "1")):
                 $this->load->library('form_validation');
