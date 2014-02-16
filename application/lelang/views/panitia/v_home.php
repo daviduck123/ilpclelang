@@ -63,7 +63,27 @@
                     </div>
                     <div id="collapseGrafik" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <div id="graph">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators bg-carousel">                        
+                                    <?php for ($i = 0; $i < 9; $i++): ?>
+                                        <li id="point-<?php echo $i; ?>" data-toggle="tooltip" data-placement="bottom" title="" data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>" class="<?php echo ($i == 0) ? "active" : ""; ?>"></li>
+                                    <?php endfor; ?>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <?php for ($i = 0; $i < 9; $i++): ?>
+                                        <div class="item <?php echo ($i == 0) ? "active" : ""; ?>">
+                                            <div class="test">  
+                                                <h3 id="titlegraph-<?php echo $i; ?>" class="text-center black"></h3>
+
+                                                <div id="graph-<?php echo $i; ?>" class="graph">
+                                                </div>
+                                            </div>                                
+                                        </div>
+                                    <?php endfor; ?>
+                                </div>
                             </div>
                         </div>
                     </div>

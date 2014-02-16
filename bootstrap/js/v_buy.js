@@ -39,7 +39,7 @@ function tampil_fluktuasi(jam) {
     loader.postMessage(jam);
 };
 loader.onmessage = function(event) {
-    update_graph();
+    update_table();
 };
 window.onload = function() {
     var waktu = TIME_SERVER;
@@ -69,7 +69,7 @@ function print_r(arr, level) {
     return dumped_text;
 };
 var update_graph = function() {
-    var strurl = "ajax/fluktuasi";
+    var strurl = "ajax/hargaAkhir";
     var csrf = $("input[name=csrf_token_name]").val();
     $.ajax({
         dataType: "json",
@@ -77,25 +77,20 @@ var update_graph = function() {
         type: "POST",
         url: URL + strurl,
         success: function(result) {
-            DATA = result;
-            loadgraph(DATA);
-            var count = 0;
-            count = DATA.length;
-            if (count > 0)
-                update_table(DATA[count - 1]);
+            update_table(result);
         }
     });
 };
-var update_table = function(source) {
-    $('#harga_1').html(numeral(source.kayu).format('0,0'));
-    $('#harga_2').html(numeral(source.besi).format('0,0'));
-    $('#harga_3').html(numeral(source.batubata).format('0,0'));
-    $('#harga_4').html(numeral(source.semen).format('0,0'));
-    $('#harga_5').html(numeral(source.tanah).format('0,0'));
-    $('#harga_6').html(numeral(source.plastik).format('0,0'));
-    $('#harga_7').html(numeral(source.kaca).format('0,0'));
-    $('#harga_8').html(numeral(source.air).format('0,0'));
-    $('#harga_9').html(numeral(source.karet).format('0,0'));
+var update_table = function(source){
+    $('#harga_1').html(numeral(source["kayu"]).format('0,0'));
+    $('#harga_2').html(numeral(source["besi"]).format('0,0'));
+    $('#harga_3').html(numeral(source["batubata"]).format('0,0'));
+    $('#harga_4').html(numeral(source["semen"]).format('0,0'));
+    $('#harga_5').html(numeral(source["tanah"]).format('0,0'));
+    $('#harga_6').html(numeral(source["plastik"]).format('0,0'));
+    $('#harga_7').html(numeral(source["kaca"]).format('0,0'));
+    $('#harga_8').html(numeral(source["air"]).format('0,0'));
+    $('#harga_9').html(numeral(source["karet"]).format('0,0'));    
     kalkulasi_ulang();
 };
 var kalkulasi_ulang = function() {
