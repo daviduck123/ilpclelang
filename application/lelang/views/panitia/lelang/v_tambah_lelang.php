@@ -8,7 +8,7 @@
             <?php echo validation_errors("<div class='alert alert-danger'><strong>", "</strong></div>"); ?>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Detail Lelang</strong></div>
-                <div class="panel-body">
+                <div class="panel-body">                   
                     <?php echo form_open("panitia/lelang/tambah", array("class" => "form-horizontal")); ?>
                     <div class="form-group">
                         <label class="col-md-2 control-label text-right">Customer :</label>

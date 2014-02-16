@@ -74,7 +74,7 @@ class Stok extends CI_Controller {
             $total = 0;
             $dataInput = $this->input->post("jumlah");
             foreach ($dataInput as $index => $single):
-                $total += preg_replace("/([^0-9\\.])/i", "", $single) * $dataHarga[$index - 1]['harga_sekarang'];
+                $total += preg_replace("/([^0-9\\.])/i", "", $single) * $dataHarga[$index]['harga_sekarang'];
             endforeach;
             //setting rules
             $this->form_validation->set_rules('jumlah[]', 'Angka Barang', 'required|callback__greater_than_wcomma[-1]|callback__numeric_wcomma');
@@ -118,8 +118,8 @@ class Stok extends CI_Controller {
             $dataInput = $this->input->post("jumlah");
             //setting rules
             foreach ($dataInput as $index => $single):
-                $stokSekarang = ($datastok[$index - 1]['stok_bebas']) ? $datastok[$index - 1]['stok_bebas'] : 0;
-                $total += preg_replace("/([^0-9\\.])/i", "", $single) * intval($dataHarga[$index - 1]['harga_sekarang'] * 0.5);
+                $stokSekarang = ($datastok[$index]['stok_bebas']) ? $datastok[$index]['stok_bebas'] : 0;
+                $total += preg_replace("/([^0-9\\.])/i", "", $single) * intval($dataHarga[$index]['harga_sekarang'] * 0.5);
                 $this->form_validation->set_rules("jumlah[$index]", "Angka Barang no $index", "required|callback__greater_than_wcomma[-1]|callback__less_than_wcomma[" . ($stokSekarang + 1) . "]|callback__numeric_wcomma");
             endforeach;
             //$this->form_validation->set_rules('grandTotal', 'Total Jual', "callback__checkIsi|callback__checkTotal[$total]|callback__numeric_wcomma");

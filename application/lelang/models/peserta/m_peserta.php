@@ -54,13 +54,23 @@ class m_peserta extends CI_Model {
     public function getStokUser($id) {
         $sql = "SELECT b.id, b.nama_barang, temp.stok_user, temp.lock_user, (temp.stok_user - temp.lock_user) as 'stok_bebas', temp.harga_sekarang as 'harga_user', b.harga_sekarang FROM barang b LEFT JOIN (SELECT * FROM user_barang ub WHERE ub.user_id = ?) temp ON b.id = temp.barang_id;";
         $result = $this->db->query($sql, array($id));
-        return $result->result_array();
+        $sementara = $result->result_array();
+        $hasil = array();
+        foreach ($sementara as $index =>$single):
+            $hasil[$single["id"]]=$single;
+        endforeach;
+        return $hasil;
     }
 
     public function getHargaSekarang() {
         $sql = "SELECT id, harga_sekarang FROM barang";
         $result = $this->db->query($sql);
-        return $result->result_array();
+        $sementara = $result->result_array();
+        $hasil = array();
+        foreach ($sementara as $index =>$single):
+            $hasil[$single["id"]]=$single;
+        endforeach;
+        return $hasil;
     }
 
     public function beliBahanBaku($barang, $harga, $user, $grandTotal) {
