@@ -1,6 +1,6 @@
 <?php echo validation_errors("<div class='alert alert-danger'><b>", "</b></div>"); ?>
 <div class="page-header">
-    <h3>Status Lelang : <span class="<?php echo $status["class"]; ?>"><?php echo $status["pesan"]; ?></span></h3>
+    <h3>Status Pengadaan : <span class="<?php echo $status["class"]; ?>"><?php echo $status["pesan"]; ?></span></h3>
 </div>
 <?php if (!empty($deskripsi)): ?>
     <!-- ini buat News-->
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-4 col-md-offset-5 text-right">
-                        <?php echo form_input(array("name" => "submit", "type" => "submit", "class" => "btn btn-primary", "value" => "Ikut Lelang")); ?>
+                        <?php echo form_input(array("name" => "submit", "type" => "submit", "class" => "btn btn-primary", "value" => "Ikut Pengadaan")); ?>
                         <?php echo form_input(array("name" => "reset", "type" => "Reset", "class" => "btn btn-default", "value" => "Reset")); ?>
                     </div>
                 </div>                
@@ -97,7 +97,7 @@
 <?php else: ?>
     <div class="col-md-12" style="min-height: 50%;">
         <div class="well">
-            <h2>Lelang Tidak ditemukan atau Sesi Lelang Masih ditutup!!!!</h2>
+            <h2>Pengadaan Tidak ditemukan atau Sesi Lelang Masih ditutup!!!!</h2>
             <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo site_url() . "lelang" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
         </div>
     </div>

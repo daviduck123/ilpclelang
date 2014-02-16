@@ -9,7 +9,7 @@
                     <dd><?php echo $deskripsi['deskripsi']; ?></dd>
                     <dt>Nama Barang :</dt>
                     <dd><?php echo $deskripsi['nama_customer']; ?></dd>
-                    <dt>Modal untuk per Unit :</dt>
+                    <dt>Modal per Unit :</dt>
                     <dd><?php echo number_format($deskripsi['budget']); ?></dd>
                     <dt>Jumlah Kebutuhan :</dt>
                     <dd><?php echo $deskripsi['jumlah_kebutuhan']; ?></dd>
@@ -63,7 +63,7 @@
 <?php else: ?>
     <div class="col-md-12" style="min-height: 50%;">
         <div class="well">
-            <h2>Detail lelang tidak ditemukan!!!!</h2>
+            <h2>Detail pengadaan tidak ditemukan!!!!</h2>
             <h3>Klik <span><a class="btn btn-info btn-lg" href="<?php echo site_url() . "home" ?>">Kembali</a></span> untuk melanjutkan pencarian anda</h3>
         </div>
     </div>

@@ -22,7 +22,7 @@
                             <th>No</th>
                             <th>Nama Barang</th>
                             <th>Stok</th>
-                            <th>Penawaran Lelang</th>
+                            <th>Penawaran Pengadaan</th>
                             <th>Harga Rata-rata Barang user</th>
                             <th>Harga Jual NPC</th>
                         </tr>   

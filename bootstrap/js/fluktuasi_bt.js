@@ -9,6 +9,7 @@ var loadgraph = function() {
         data: DATA,
         hideHover: false,
         parseTime: false,
+        smooth: false,
         // The name of the data record attribute that contains x-values.
         xkey: 'id',
         // A list of names of data record attributes that contain y-values.
