@@ -18,7 +18,8 @@
         <script src="<?php echo base_url(); ?>bootstrap/js/bootstrap.min.js"></script>
         <title><?php echo $title; ?> - ILPC 2014</title>
     </head>
-    <body ondragstart="return false" onselectstart="return false" oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
+    <body>
+    <!--<body ondragstart="return false" onselectstart="return false" oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">-->
         <script>
             var SITE_URL = "<?php echo base_url(); ?>";
             var URL="<?php echo site_url(); ?>";

@@ -16,6 +16,12 @@ class M_ajax extends CI_Model {
         $result = $this->db->query($sql);
         return $result->result_array();
     }
+    
+    public function selectHarga(){
+        $sql = "SELECT nama_barang, harga_sekarang FROM barang";
+        $result = $this->db->query($sql);
+        return $result->result_array();
+    }
 
 }
 

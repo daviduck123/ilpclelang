@@ -41,8 +41,16 @@
     border-top-right-radius: 0;
 }
 
-#graph{
+.graph{
+    height: 300px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.test{
     height: 400px;
+    width: 100%;
+    background-color: white;
 }
 .btnX{
     margin-left: 10px;
