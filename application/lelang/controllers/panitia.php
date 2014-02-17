@@ -157,7 +157,8 @@ class Panitia extends CI_Controller {
         $content['season'] = $database['season'];
         $content['jalan'] = $database['jalan'];
         $content['status_panitia'] = $menu['status'];
-        $content['status_semua_lelang'] = $this->m_panitia->getStatusLelangTerakhir();
+        $status_sesi = $this->m_panitia->getStatusLelangTerakhir();
+        $content['status_semua_lelang'] = $status_sesi['STATUS'];
         $this->load->view('v_header', $header);
         $this->load->view("panitia/v_menu_panitia", $menu);
         $this->load->view('panitia/season/v_set_season', $content);

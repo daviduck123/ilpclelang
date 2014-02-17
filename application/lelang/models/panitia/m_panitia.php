@@ -79,8 +79,7 @@ Class M_panitia extends CI_Model {
                 ORDER BY id DESC 
                 LIMIT 1";
         $result = $this->db->query($sql);
-        $row = $result->row();
-        return $row->STATUS;
+        return $result->row_array();
     }
     
     public function disabledStatus($id) {
@@ -639,7 +638,7 @@ Class M_panitia extends CI_Model {
                 FROM history_modal
                 WHERE user_id = u.id
                 ) AS jumlahpos, u.jumlahuang
-                FROM user U
+                FROM user u
                 ORDER BY u.jumlahSertifikat DESC ";
         $result = $this->db->query($sql);
         return $result->result_array();
