@@ -72,10 +72,9 @@ Class M_panitia extends CI_Model {
     }
     
     public function getStatusLelangTerakhir() {
-        $sql = "SELECT IF( season_id ='4'
-                AND status_lelang ='2',  '1',  '0' ) AS 
-                STATUS 
+        $sql = "SELECT season_id , status_lelang
                 FROM lelang_jual_customer
+                WHERE season_id ='4' AND status_lelang ='2'
                 ORDER BY id DESC 
                 LIMIT 1";
         $result = $this->db->query($sql);

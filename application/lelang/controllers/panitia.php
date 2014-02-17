@@ -158,7 +158,13 @@ class Panitia extends CI_Controller {
         $content['jalan'] = $database['jalan'];
         $content['status_panitia'] = $menu['status'];
         $status_sesi = $this->m_panitia->getStatusLelangTerakhir();
-        $content['status_semua_lelang'] = $status_sesi['STATUS'];
+        $status = 0;
+        if (count($status_sesi) > 0) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $content['status_semua_lelang'] = $status;
         $this->load->view('v_header', $header);
         $this->load->view("panitia/v_menu_panitia", $menu);
         $this->load->view('panitia/season/v_set_season', $content);
@@ -923,6 +929,7 @@ class Panitia extends CI_Controller {
         $this->session->set_flashdata("notif", $notif);
         redirect("panitia/season");
     }
+
     public function jualSemuaBarang() {
         $id = str_replace("panitia/jualSemuaBarang/", "", $this->uri->uri_string());
         if ($id != "panitia/jualSemuaBarang"):
@@ -1229,6 +1236,7 @@ class Panitia extends CI_Controller {
         $this->load->view('panitia/admin/rekap/v_rekap', $content);
         $this->load->view('v_footer');
     }
+
     // </editor-fold>
 }
 
