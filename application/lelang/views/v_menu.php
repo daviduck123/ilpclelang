@@ -9,7 +9,7 @@
             <div class="bs-sidebar hidden-print" role="complementary">
                 <ul class="nav bs-sidenav">
                     <li <?php echo ($this->uri->segment(1) == "home") ? "class='active'" : '' ?>><a href="<?php echo site_url(); ?>home">Home</a></li>
-                    <li <?php echo ($this->uri->segment(1) == "stok") ? "class='active'" : '' ?>><a href="<?php echo site_url(); ?>stok">Stok Saya</a></li>
+                    <li <?php echo ($this->uri->segment(1) == "stok") ? "class='active'" : '' ?>><a href="<?php echo site_url(); ?>stok">Stok Anda</a></li>
                     <li <?php echo ($this->uri->segment(1) == "lelang") ? "class='active'" : '' ?>><a href="<?php echo site_url(); ?>lelang">Pengadaan</a></li>
                     <li><a href="<?php echo site_url(); ?>login/logout">Log Out</a></li>
                 </ul>

@@ -7,7 +7,7 @@
             <?php endif; ?>
             <div class="page-header">
                 <h2>
-                    <div class="col-md-5">Stok Saya</div>
+                    <div class="col-md-5">Stok Anda</div>
                     &nbsp;
                     <div class="col-md-6 text-right">
                         <a role="button" class="btn btn-primary btn-lg btnbuysell" href="<?php echo site_url(); ?>stok/buy">Buy</a>
@@ -23,7 +23,7 @@
                             <th>Nama Barang</th>
                             <th>Stok</th>
                             <th>Penawaran Pengadaan</th>
-                            <th>Harga Rata-rata Barang user</th>
+                            <th>Harga Rata-rata Barang Anda</th>
                             <th>Harga Jual NPC</th>
                         </tr>   
                     </thead>
