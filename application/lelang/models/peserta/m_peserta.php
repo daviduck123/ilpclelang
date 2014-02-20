@@ -143,13 +143,14 @@ class m_peserta extends CI_Model {
     }
 
     public function getDetailLelang($user, $id) {
+        
         $hasil = array();
         $sql = "SELECT lj.id, lj.no_lelang, lj.nama_barang, lj.judul_lelang, lj.deskripsi, lj.jumlah, c.nama_customer, temp.time, s.aktif, lj.budget
                 FROM lelang_jual_customer lj
                 INNER JOIN season s ON lj.season_id = s.id
                 INNER JOIN customer c ON lj.customer_id = c.id
                 LEFT JOIN (SELECT uj.lelang_jual_customer_id, uj.time FROM user_lelang_jual uj WHERE uj.user_id = ?) temp ON lj.id = temp.lelang_jual_customer_id
-                WHERE s.aktif = '1' OR s.aktif = '2' AND lj.id = ?;";
+                WHERE (s.aktif = '1' OR s.aktif = '2') AND lj.id = ?;";
         $result = $this->db->query($sql, array($user, $id));
         $hasil['deskripsi'] = $result->row_array();
         $sql = "SELECT b.id, b.nama_barang, (ub.stok_user-ub.lock_user) as 'stok', ub.harga_sekarang 
